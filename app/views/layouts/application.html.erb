@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BlogApp2</title>
+    <meta charset="UTF-8">
+    <title>Rails Camp Blog</title>
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,8 +12,29 @@
   </head>
 
   <body>
+    <header>
+    <p id="logo"><a href="">RailsCamp<span>Blog</span></a></p>
+    <nav>
+      <ul>
+        <li><%= link_to "トップ", root_url %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "新規投稿", '#' %></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "新規登録", new_user_registration_path %></li>
+          <li><%= link_to "ログイン", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+    <div class="clear"></div>
+    </header>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+    <footer>
+        <div id="footer_inner">
+            <p>Copyright RailsCamp 2015 All Rights Reserved</p>
+        </div>
+    </footer>
   </body>
 </html>
