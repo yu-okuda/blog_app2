@@ -7,6 +7,9 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.1'
 # Devise
 gem 'devise'
+
+gem 'redis'
+gem 'redis-objects'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server

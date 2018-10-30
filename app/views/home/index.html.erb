@@ -25,9 +25,9 @@
     <div id="sidebar">
         <h2>★PV数ランキング</h2>
         <ul>
-            <li><a href=""><span></span></a></li>
-            <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（8PV）</span></a></li>
-            <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（2PV）</span></a></li>
+          <% Post.most_popular.each do |post| %>
+          <li><a href="<%= post %>"><%= post.title %><span>( <%= post.redis_page_view %>PV )</span></a></li>
+          <% end %>
         </ul>
     </div>
     <div class="clear"></div>
