@@ -15,6 +15,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by(id: params[:id])
+    @post.redis_access
     @user = User.find_by(id: @post.user_id)
   end
 
