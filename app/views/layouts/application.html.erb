@@ -12,8 +12,11 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
     <header>
     <p id="logo"><a href="">RailsCamp<span>Blog</span></a></p>
     <nav>

@@ -40,7 +40,7 @@ class PostsController < ApplicationController
   def ensure_correct_user
     @post = Post.find_by(id: params[:id])
     if current_user.id != @post.user_id
-      alert = "Not yours"
+      flash[:notice] = "Not yours"
       redirect_to root_url
     end
   end
