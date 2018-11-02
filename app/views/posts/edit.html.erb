@@ -1,19 +1,15 @@
 <div class="container">
-  <%= form_tag("/posts/#{@post.id}/update") do %>
-    <div class="form">
-      <div class="form-body">
-          タイトル
-        <div>
-          <input name="title" value="<%= @post.title %>">
-        </div>
-          記事内容
-        <div>
-          <textarea name="content"><%= @post.content %></textarea>
-        </div>
-        <div>
-          <input type="submit" value="Update Article">
-        </div>
-      </div>
-    </div>
+  <%= form_for(@post) do |f| %>
+  タイトル
+  <div>
+    <%= f.text_field :title %>
+  </div>
+  投稿内容
+  <div>
+    <%= f.text_area :content %>
+  </div>
+  <div>
+    <%= f.submit "Update Article" %>
+  </div>
   <% end %>
 </div>

@@ -9,14 +9,14 @@
       <% @posts.each do |post| %>
       <div>
         <h2>
-          <%= link_to post.content, post %>
+          <%= link_to post.title, post %>
         </h2>
         <p>
           <%= post.updated_at %>
         </p>
         <% if user_signed_in? %>
             <%= link_to "編集", "/posts/#{post.id}/edit" %>
-            <%= link_to "削除", post, method: :delete %>
+            <%= link_to "削除", post, method: :delete, data: { confirm: "削除してよろしいですか?" } %>
         <% end %>
       </div>
       <% end %>
@@ -25,9 +25,9 @@
     <div id="sidebar">
         <h2>★PV数ランキング</h2>
         <ul>
-            <li><a href=""><span></span></a></li>
-            <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（8PV）</span></a></li>
-            <li><a href="">記事タイトル記事タイトル１記事タイトル記事タイトル<span>（2PV）</span></a></li>
+          <% Post.most_popular.each do |post| %>
+          <li><a href="<%= post_url(post) %>"><%= post.title %><span>( <%= post.redis_page_view %>PV )</span></a></li>
+          <% end %>
         </ul>
     </div>
     <div class="clear"></div>

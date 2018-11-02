@@ -25,9 +25,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find_by(id: params[:id])
-    @post.title = params[:title]
-    @post.content = params[:content]
-    if @post.save
+    if @post.update_attributes(post_params)
       redirect_to @post
     end
   end
